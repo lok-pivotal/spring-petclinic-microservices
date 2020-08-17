@@ -11,7 +11,7 @@
     <parent>
         <groupId>org.springframework.samples</groupId>
         <artifactId>spring-petclinic-microservices</artifactId>
-        <version>2.3.2</version>
+        <version>2.3.3</version>
     </parent>
 
     <properties>
@@ -21,8 +21,6 @@
         <webjars-angular.version>1.6.4</webjars-angular.version>
         <webjars-angular-ui-router.version>1.0.3</webjars-angular-ui-router.version>
         <wro4j.version>1.8.0</wro4j.version>
-        <docker.image.exposed.port>8081</docker.image.exposed.port>
-        <docker.image.dockerfile.dir>${basedir}/../docker</docker.image.dockerfile.dir>
     </properties>
 
     <dependencies>
@@ -33,11 +31,11 @@
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-            <optional>true</optional>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-configuration-processor</artifactId>-->
+<!--            <optional>true</optional>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
@@ -49,10 +47,10 @@
         </dependency>
 
         <!-- Spring Cloud -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-sleuth-zipkin</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-sleuth-zipkin</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-circuitbreaker-reactor-resilience4j</artifactId>
@@ -83,28 +81,33 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-sleuth</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter-sleuth</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
-
-        <!-- Third parties -->
+        <!-- Micrometer - Wavefront -->
         <dependency>
-            <groupId>org.jolokia</groupId>
-            <artifactId>jolokia-core</artifactId>
+            <groupId>com.wavefront</groupId>
+            <artifactId>wavefront-spring-boot-starter</artifactId>
+            <version>2.0.0</version>
         </dependency>
+        <!-- Third parties -->
+<!--        <dependency>-->
+<!--            <groupId>org.jolokia</groupId>-->
+<!--            <artifactId>jolokia-core</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
-        <dependency>
-            <groupId>io.micrometer</groupId>
-            <artifactId>micrometer-registry-prometheus</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>io.micrometer</groupId>-->
+<!--            <artifactId>micrometer-registry-prometheus</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>io.github.resilience4j</groupId>
             <artifactId>resilience4j-micrometer</artifactId>
@@ -192,20 +195,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <profiles>
-        <profile>
-            <id>buildDocker</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>com.spotify</groupId>
-                        <artifactId>docker-maven-plugin</artifactId>
-                        <version>${docker.plugin.version}</version>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 
 </project>
